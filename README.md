@@ -13,7 +13,7 @@ Installation
 Running the daemon
 -----------------
 
-`docker run -it --net=host --privileged --cap-add=NET_ADMIN --entrypoint bash --name ct consul-template`
+`docker run -it --net=host --privileged --cap-add=NET_ADMIN --entrypoint bash --name ct qapps/check_vip`
 
 ENV:
 -----------------
