@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ip a d {{key "services/oldvip"}} dev lo
+ip a a {{key "services/vip"}} dev lo
