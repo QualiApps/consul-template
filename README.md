@@ -13,12 +13,12 @@ Installation
 Running the daemon
 -----------------
 
-`docker run -it --net=host --privileged --cap-add=NET_ADMIN --entrypoint bash --name ct qapps/check_vip`
+`docker run -d --net=host --privileged --cap-add=NET_ADMIN --entrypoint bash --name ct qapps/check_vip`
 
 ENV:
 -----------------
 
 `CONSUL_ADDR` - consul IP-address
 
-`CONSUL_PORT` - consul port (defaults to 8500)
+`CONSUL_PORT` - consul port (default: 8500)
 
