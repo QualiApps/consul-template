@@ -20,4 +20,4 @@ COPY ./files/update_vip.ctmpl $BIN_PATH/update_vip.ctmpl
 RUN chmod u+x $BIN_PATH/update_vip.sh \
     $BIN_PATH/init_template.sh
 
-ENTRYPOINT [ "$BIN_PATH/init_template.sh" ]
+ENTRYPOINT [ $BIN_PATH/init_template.sh ]
