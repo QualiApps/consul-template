@@ -13,7 +13,7 @@ Installation
 Running the daemon
 -----------------
 
-`docker run -d --net=host --privileged --cap-add=NET_ADMIN --entrypoint bash --name ct qapps/check_vip`
+`docker run -d --net=host --privileged --cap-add=NET_ADMIN --name vip qapps/check_vip`
 
 ENV:
 -----------------

@@ -1,21 +1,23 @@
-# Keepalived
+# Consul-template
 
-FROM fedora:21
+FROM alpine
 
 MAINTAINER Yury Kavaliou <Yury_Kavaliou@epam.com>
 
-RUN yum install -y tar
+ENV BIN_PATH /usr/local/bin
+
+RUN apk add --update tar && rm -rf /var/cache/apk/*
 
 ADD https://github.com/hashicorp/consul-template/releases/download/v0.10.0/consul-template_0.10.0_linux_amd64.tar.gz /tmp/consul-template.tar.gz
 RUN tar -xf /tmp/consul-template.tar.gz \
     && mv consul-template_0.10.0_linux_amd64/consul-template /bin/consul-template \
     && chmod a+x /bin/consul-template
 
-COPY ./files/init_template.sh /usr/local/sbin/init_template.sh
-COPY ./files/update_vip.sh /usr/local/sbin/update_vip.sh
-COPY ./files/update_vip.ctmpl /usr/local/sbin/update_vip.ctmpl
+COPY ./files/init_template.sh $BIN_PATH/init_template.sh
+COPY ./files/update_vip.sh $BIN_PATH/update_vip.sh
+COPY ./files/update_vip.ctmpl $BIN_PATH/update_vip.ctmpl
 
-RUN chmod u+x /usr/local/sbin/update_vip.sh \
-    /usr/local/sbin/init_template.sh
+RUN chmod u+x $BIN_PATH/update_vip.sh \
+    $BIN_PATH/init_template.sh
 
-ENTRYPOINT [ "/usr/local/sbin/init_template.sh" ]
+ENTRYPOINT [ "$BIN_PATH/init_template.sh" ]

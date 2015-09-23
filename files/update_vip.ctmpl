@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
-ip a d {{key "services/oldvip"}} dev lo
-ip a a {{key "services/vip"}} dev lo
+{{with $oldvip := key "services/oldvip"}}{{if $oldvip}}ip a d {{$oldvip}} dev lo{{end}}{{end}}
+{{with $vip := key "services/vip"}}{{if $vip}}ip a a {{$vip}} dev lo{{end}}{{end}}
