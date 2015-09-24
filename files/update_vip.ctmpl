@@ -1,4 +1,4 @@
 #!/bin/sh
 
-{{with $oldvip := key "services/oldvip"}}{{if $oldvip}}ip a d {{$oldvip}} dev lo{{end}}{{end}}
-{{with $vip := key "services/vip"}}{{if $vip}}ip a a {{$vip}} dev lo{{end}}{{end}}
+{{with $oldvip := key "services/oldvip"}}{{if $oldvip}}sudo ip addr add {{$oldvip}}/32 dev lo{{end}}{{end}}
+{{with $vip := key "services/vip"}}{{if $vip}}sudo ip addr add {{$vip}}/32 dev lo{{end}}{{end}}
